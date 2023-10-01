@@ -3,8 +3,13 @@ import Container from '@mui/material/Container'
 import { Header } from './components'
 import { Home, FullPost, Registration, AddPost, Login } from './pages'
 import { Routes, Route, Link } from 'react-router-dom'
+import { useGetAuthMeQuery } from './redux/api'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const { data, isLoading } = useGetAuthMeQuery()
+  const isAuth = useSelector((state) => state.auth.isAuth)
+
   return (
     <>
       <Header />
